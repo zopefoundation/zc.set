@@ -61,7 +61,8 @@ class Set(persistent.Persistent):
                'issubset', 'issuperset'):
         locals()[nm] = strippingWrapper(nm)
 
-    for nm in ('difference', 'intersection', 'symmetric_difference', 'union'):
+    for nm in ('difference', 'intersection', 'isdisjoint',
+               'symmetric_difference', 'union'):
         locals()[nm] = persistentOutputWrapper(nm)
 
     for nm in ('__and__', '__or__', '__rand__', '__ror__', '__rsub__',
