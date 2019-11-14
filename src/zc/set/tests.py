@@ -1,13 +1,15 @@
+import doctest
 import unittest
-
-from zope.testing import doctest, module
 import zc.set
+
 
 def setUpSetsOne(test):
     test.globs['factory'] = set
 
+
 def setUpSetsTwo(test):
     test.globs['factory'] = zc.set.Set
+
 
 def test_suite():
     return unittest.TestSuite((

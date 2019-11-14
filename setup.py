@@ -21,5 +21,6 @@ setup(
             'ZODB[test]',
             'zope.app.folder',
             ]),
+    test_suite='zc.set.tests.test_suite',
     zip_safe=False
     )
