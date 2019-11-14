@@ -158,7 +158,7 @@ __hash__ works, insofar as raising an error as it is supposed to.
     >>> hash(original)
     Traceback (most recent call last):
     ...
-    TypeError: set objects are unhashable
+    TypeError: unhashable type: ...
 
 __iand__ works, including setting _p_changed
 

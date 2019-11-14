@@ -52,7 +52,9 @@ class Set(persistent.Persistent):
     def __init__(self, iterable=()):
         self._data = set(iterable)
 
-    for nm in ('__cmp__', '__contains__', '__hash__', '__iter__', '__len__'):
+    __hash__ = None
+
+    for nm in ('__cmp__', '__contains__', '__iter__', '__len__'):
         locals()[nm] = simpleWrapper(nm)
 
     for nm in ('__eq__', '__ge__', '__gt__', '__le__', '__lt__', '__ne__',

@@ -13,8 +13,10 @@ def setUpSetsTwo(test):
 
 def test_suite():
     return unittest.TestSuite((
-        doctest.DocFileSuite('README.txt', setUp=setUpSetsOne),
-        doctest.DocFileSuite('README.txt', setUp=setUpSetsTwo),
+        doctest.DocFileSuite('README.txt', setUp=setUpSetsOne,
+                             optionflags=doctest.ELLIPSIS),
+        doctest.DocFileSuite('README.txt', setUp=setUpSetsTwo,
+                             optionflags=doctest.ELLIPSIS),
         ))
 
 
