@@ -1,4 +1,5 @@
 import persistent
+import sys
 
 
 def simpleWrapper(name):
@@ -87,7 +88,13 @@ class Set(persistent.Persistent):
         return self.__class__(self._data)
 
     def __repr__(self):
-        return '%s.%s%s' % (
+        if sys.version_info < (3,):
+            # set([1, 2, 3])
+            items = repr(self._data)[5:-2]
+        else:
+            # {1, 2, 3}
+            items = repr(self._data)[1:-1]
+        return '%s.%s([%s])' % (
             self.__class__.__module__,
             self.__class__.__name__,
-            repr(self._data)[3:])
+            items)
