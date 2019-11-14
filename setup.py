@@ -20,12 +20,12 @@ setup(
     include_package_data=True,
     install_requires=[
         'setuptools',
-        'ZODB3',
-        'zope.app.folder',
+        'persistent',
     ],
     extras_require=dict(
         test=[
-            'zope.testing',
+            'ZODB[test]',
+            'zope.app.folder',
             ]),
     zip_safe=False
     )
