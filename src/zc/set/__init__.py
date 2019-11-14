@@ -1,9 +1,11 @@
 import persistent
 
+
 def simpleWrapper(name):
     def wrapper(self, *args, **kwargs):
         return getattr(self._data, name)(*args, **kwargs)
     return wrapper
+
 
 def mutatingWrapper(name):
     def wrapper(self, *args, **kwargs):
@@ -12,15 +14,17 @@ def mutatingWrapper(name):
         return res
     return wrapper
 
+
 def mutatingStrippingWrapper(name):
     def wrapper(self, other):
         if isinstance(other, self.__class__):
             other = other._data
         getattr(self._data, name)(other)
         self._p_changed = True
-        return self # this is used necessary for all the __i*__, so we have to
+        return self  # this is used necessary for all the __i*__, so we have to
         # return the mutated value
     return wrapper
+
 
 def persistentOutputWrapper(name):
     def wrapper(self, *args, **kwargs):
@@ -29,6 +33,7 @@ def persistentOutputWrapper(name):
         inst._data = res
         return inst
     return wrapper
+
 
 def persistentOutputStrippingWrapper(name):
     def wrapper(self, other):
@@ -39,6 +44,7 @@ def persistentOutputStrippingWrapper(name):
         inst._data = res
         return inst
     return wrapper
+
 
 def strippingWrapper(name):
     def wrapper(self, other):
