@@ -1,5 +1,6 @@
 import doctest
 import unittest
+
 import zc.set
 
 
@@ -12,13 +13,9 @@ def setUpSetsTwo(test):
 
 
 def test_suite():
-    return unittest.TestSuite((
+    return unittest.TestSuite([
         doctest.DocFileSuite('README.txt', setUp=setUpSetsOne,
                              optionflags=doctest.ELLIPSIS),
         doctest.DocFileSuite('README.txt', setUp=setUpSetsTwo,
                              optionflags=doctest.ELLIPSIS),
-        ))
-
-
-if __name__ == '__main__':
-    unittest.main(defaultTest='test_suite')
+    ])
