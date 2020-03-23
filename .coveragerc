@@ -1,0 +1,8 @@
+[run]
+source = zc.set
+
+[paths]
+source =
+    src/
+    .tox/*/lib/python*/site-packages/
+    .tox/pypy*/site-packages/
