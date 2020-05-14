@@ -36,11 +36,21 @@ def persistentOutputWrapper(name):
     return wrapper
 
 
-def persistentOutputStrippingWrapper(name):
+def persistentOutputStrippingWrapper(name, can_reverse=False):
     def wrapper(self, other):
         if isinstance(other, self.__class__):
             other = other._data
-        res = getattr(self._data, name)(other)
+        try:
+            meth = getattr(self._data, name)
+            arg = other
+        except AttributeError:
+            # See comments in the call to the outer function
+            if not can_reverse:
+                raise
+            meth = getattr(other, name.replace('__r', '__', 1))
+            arg = self._data
+
+        res = meth(arg)
         inst = self.__class__()
         inst._data = res
         return inst
@@ -72,9 +82,19 @@ class Set(persistent.Persistent):
                'symmetric_difference', 'union'):
         locals()[nm] = persistentOutputWrapper(nm)
 
-    for nm in ('__and__', '__or__', '__rand__', '__ror__', '__rsub__',
-               '__rxor__', '__sub__', '__xor__'):
-        locals()[nm] = persistentOutputStrippingWrapper(nm)
+    for nm in (
+            '__and__', '__rand__',
+            '__or__', '__ror__',
+            '__sub__', '__rsub__',
+            '__xor__', '__rxor__',
+    ):
+        # The __rXXX__ methods are not required to be present on the ``set``
+        # type by the language spec; the only documented requirements
+        # are the non-reversed versions. Accordingly, PyPy < 7.3 doesn't
+        # provide them.
+        locals()[nm] = persistentOutputStrippingWrapper(
+            nm,
+            can_reverse=nm.startswith('__r') and not hasattr(set, nm))
 
     for nm in ('add', 'clear', 'difference_update', 'discard',
                'intersection_update', 'pop', 'remove',
