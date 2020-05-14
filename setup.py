@@ -1,31 +1,51 @@
 from setuptools import setup, find_packages
-import os.path
 
-def read(path):
-    return open(
-        os.path.join(os.path.dirname(__file__), *path.split('/'))).read()
+
+def read(filename):
+    with open(filename) as f:
+        return f.read()
 
 
 setup(
     name="zc.set",
-    version="0.1dev",
+    version="0.2",
     license='ZPL 2.1',
     long_description='\n\n'.join([
         read('CHANGES.txt'),
         read('src/zc/set/README.txt'),
-        ]),
+    ]),
     packages=find_packages('src'),
-    package_dir={'':'src'},
+    package_dir={'': 'src'},
     namespace_packages=['zc'],
     include_package_data=True,
     install_requires=[
         'setuptools',
-        'ZODB3',
-        'zope.app.folder',
+        'persistent',
     ],
     extras_require=dict(
         test=[
-            'zope.testing',
-            ]),
-    zip_safe=False
-    )
+            'ZODB[test]',
+            'zope.app.folder',
+        ],
+    ),
+    classifiers=[
+        'Development Status :: 5 - Production/Stable',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: Zope Public License',
+        'Natural Language :: English',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: Implementation :: CPython',
+        'Programming Language :: Python :: Implementation :: PyPy',
+        'Topic :: Software Development',
+    ],
+    test_suite='zc.set.tests.test_suite',
+    zip_safe=False,
+)

@@ -1,16 +1,15 @@
-======
-Issues
-======
-
-* Tests fail on Python 2.6+.
-
 =======
 Changes
 =======
 
-0.1 (unreleased)
+0.2 (unreleased)
 ================
 
-* ...
+- Make Python-3 compatible
 
+- Add support for PyPy and PyPy3.
 
+0.1 (2007-05-09)
+================
+
+- Was never released to PyPI
