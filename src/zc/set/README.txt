@@ -90,7 +90,7 @@ equating with normal set, at least if spelled in the right direction.
     False
     >>> s != original
     True
-    
+
     >>> original.update(s)
     >>> s > original
     False
@@ -158,7 +158,7 @@ __hash__ works, insofar as raising an error as it is supposed to.
     >>> hash(original)
     Traceback (most recent call last):
     ...
-    TypeError: unhashable type: ...
+    TypeError:...unhashable...
 
 __iand__ works, including setting _p_changed
 
