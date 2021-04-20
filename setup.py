@@ -16,7 +16,8 @@ setup(
     ]),
     author='Zope Foundation and Contributors',
     author_email='zope-dev@zope.org',
-    description="Persistent sets are persistent objects that have the API of standard Python sets",
+    description="Persistent sets are persistent objects that have the API of"
+                " standard Python sets",
     url="https://github.com/zopefoundation/zc.set/",
     packages=find_packages('src'),
     package_dir={'': 'src'},
@@ -46,6 +47,7 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Software Development',

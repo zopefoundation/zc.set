@@ -37,8 +37,10 @@ potentially mutating operation.
     >>> persistent.interfaces.IPersistent.providedBy(s)
     True
     >>> original = factory() # set in one test run; a persistent set in another
-    >>> sorted(set(dir(original)) - set(dir(s)))
+    >>> sorted(set(dir(original)) - set(dir(s)) - {'__class_getitem__'})
     []
+
+.. note:: Python 3.9 added ``__class_getitem__`` to ``set`` via PEP 560.
 
 add sets _p_changed
 

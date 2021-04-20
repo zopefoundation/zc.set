@@ -110,10 +110,10 @@ class Set(persistent.Persistent):
     def __repr__(self):
         if sys.version_info < (3,):
             # set([1, 2, 3])
-            items = repr(self._data)[5:-2]
+            items = repr(self._data)[5:-2]  # pragma: PY2
         else:
             # {1, 2, 3}
-            items = repr(self._data)[1:-1]
+            items = repr(self._data)[1:-1]  # pragma: PY3
         return '%s.%s([%s])' % (
             self.__class__.__module__,
             self.__class__.__name__,
