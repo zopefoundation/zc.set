@@ -16,7 +16,7 @@ setup(
         read('src/zc/set/README.txt'),
     ]),
     author='Zope Foundation and Contributors',
-    author_email='zope-dev@zope.org',
+    author_email='zope-dev@zope.dev',
     description="Persistent sets are persistent objects that have the API of"
                 " standard Python sets",
     url="https://github.com/zopefoundation/zc.set/",
@@ -24,6 +24,7 @@ setup(
     package_dir={'': 'src'},
     namespace_packages=['zc'],
     include_package_data=True,
+    python_requires='>=3.7',
     install_requires=[
         'setuptools',
         'persistent',
@@ -51,6 +52,5 @@ setup(
         'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Software Development',
     ],
-    test_suite='zc.set.tests.test_suite',
     zip_safe=False,
 )

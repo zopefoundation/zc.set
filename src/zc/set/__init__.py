@@ -1,5 +1,3 @@
-import sys
-
 import persistent
 
 
@@ -109,13 +107,9 @@ class Set(persistent.Persistent):
         return self.__class__(self._data)
 
     def __repr__(self):
-        if sys.version_info < (3,):
-            # set([1, 2, 3])
-            items = repr(self._data)[5:-2]  # pragma: PY2
-        else:
-            # {1, 2, 3}
-            items = repr(self._data)[1:-1]  # pragma: PY3
-        return '%s.%s([%s])' % (
+        # {1, 2, 3}
+        items = repr(self._data)[1:-1]
+        return '{}.{}([{}])'.format(
             self.__class__.__module__,
             self.__class__.__name__,
             items)
