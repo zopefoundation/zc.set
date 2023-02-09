@@ -1,5 +1,6 @@
-import persistent
 import sys
+
+import persistent
 
 
 def simpleWrapper(name):
